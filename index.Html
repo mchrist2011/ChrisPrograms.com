@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChrisPrograms - Your Ultimate Gaming Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00ff88;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px #00ff88); }
+            to { filter: drop-shadow(0 0 20px #0066ff); }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 102, 255, 0.1));
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            animation: slideIn 1s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #0066ff, #ff0066);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Cards */
+        .games-section {
+            margin: 3rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00ff88;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .game-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        
+        .game-card:hover::before {
+            animation: shimmer 1s ease-in-out;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); opacity: 1; }
+            100% { transform: translateX(100%) rotate(45deg); opacity: 0; }
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #00ff88;
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+        
+        .game-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
+        
+        .game-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+            filter: brightness(1.2);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 10% auto;
+            padding: 2rem;
+            border: 2px solid #00ff88;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            animation: modalSlide 0.3s ease-out;
+        }
+        
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ff4444;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #ff0000;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin: 1rem 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 102, 255, 0.1));
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            padding: 1rem;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+        }
+        
+        /* Chat Interface */
+        .chat-container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #00ff88;
+        }
+        
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+        
+        /* File Upload Section */
+        .upload-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 0, 102, 0.1));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .file-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .file-item:hover {
+            transform: scale(1.05);
+            border-color: #00ff88;
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid #ff4444;
+        }
+        
+        .admin-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Popular Games Section */
+        .popular-games {
+            margin: 3rem 0;
+        }
+        
+        .game-logo {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 10px;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        /* AI Chat Section */
+        .ai-chat {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(255, 0, 102, 0.1));
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        /* User Status */
+        .user-status {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #00ff88;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <!-- User Status -->
+    <div class="user-status">
+        <div id="userStatus">Not Logged In</div>
+        <button class="btn" onclick="showLoginModal()" id="loginBtn">Login</button>
+    </div>
+    
+    <header>
+        <nav class="container">
+            <div class="logo">ChrisPrograms</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#chat">Chat</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="showAdminLogin()">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero fade-in">
+            <h1>Welcome to ChrisPrograms</h1>
+            <p>Your ultimate destination for compressed games, programming resources, and gaming community. Download, share, and connect with fellow gamers!</p>
+        </section>
+
+        <!-- Featured Games Section -->
+        <section id="games" class="games-section">
+            <h2 class="section-title">Featured Gaming Websites</h2>
+            <div class="games-grid">
+                <div class="game-card pulse">
+                    <div class="game-logo">CGH</div>
+                    <h3>Compressed Game Hub</h3>
+                    <p>The best platform to download highly compressed games for PC in Google Drive links. Completely safe downloads including GTA 5, GTA 4 and many more popular titles.</p>
+                    <a href="https://compressedgamehub.co.in/" target="_blank" class="btn">Visit Site</a>
+                </div>
+                
+                <div class="game-card pulse">
+                    <div class="game-logo">ATH</div>
+                    <h3>All Type Hacks</h3>
+                    <p>We make hacking easy! Find software cracks, game cheats, full version software, highly compressed games, and unlimited free tricks for gamers and developers.</p>
+                    <a href="https://www.alltypehacks.net/" target="_blank" class="btn">Visit Site</a>
+                </div>
+                
+                <div class="game-card pulse">
+                    <div class="game-logo">OOC</div>
+                    <h3>Ocean of Compressed</h3>
+                    <p>Download highly compressed PC games that work 100%. Also provides highly compressed Android games with guaranteed functionality and safety.</p>
+                    <a href="https://oceanofcompressed.com/" target="_blank" class="btn">Visit Site</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Games -->
+        <section class="popular-games">
+            <h2 class="section-title">Popular Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-logo">GTA</div>
+                    <h3>GTA Series</h3>
+                    <p>Grand Theft Auto games - Vice City, San Andreas, GTA V</p>
+                    <button class="btn" onclick="showGameVideo('gta')">Watch Trailer</button>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-logo">COD</div>
+                    <h3>Call of Duty</h3>
+                    <p>Modern Warfare series and classic COD games</p>
+                    <button class="btn" onclick="showGameVideo('cod')">Watch Trailer</button>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-logo">FIFA</div>
+                    <h3>FIFA Series</h3>
+                    <p>Latest FIFA games and PES alternatives</p>
+                    <button class="btn" onclick="showGameVideo('fifa')">Watch Trailer</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- File Upload Section -->
+        <section id="upload" class="upload-section">
+            <h2 class="section-title">Upload Files</h2>
+            <p>Share your games, photos, and videos with the community!</p>
+            
+            <div class="form-group">
+                <input type="file" id="fileUpload" multiple accept="*/*" style="display: none;">
+                <button class="btn" onclick="document.getElementById('fileUpload').click()">Choose Files</button>
+                <button class="btn" onclick="uploadFiles()">Upload</button>
+            </div>
+            
+            <div id="uploadedFiles" class="file-grid">
+                <!-- Uploaded files will appear here -->
+            </div>
+        </section>
+
+        <!-- AI Chat Section -->
+        <section id="chat" class="ai-chat">
+            <h2 class="section-title">Chat with Chris AI</h2>
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div style="color: #00ff88; margin-bottom: 1rem;">
+                        <strong>Chris AI:</strong> Hello! I'm Chris, your personal gaming assistant. Ask me anything about games, programming, or tech!
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask Chris AI anything..." onkeypress="handleChatKeyPress(event)">
+                    <button class="btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact ChrisPrograms</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📱 Phone Numbers</h3>
+                    <p>+250 796837967</p>
+                    <p>+250 732744523</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>chrisprograms2011@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>🎮 Gaming Hub</h3>
+                    <p>Download compressed games safely</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.youtube.com/@M.Chris.T" target="_blank" class="social-link">YT1</a>
+                <a href="https://www.youtube.com/@CHRIS-c7y2v" target="_blank" class="social-link">YT2</a>
+                <a href="https://www.instagram.com/m.chris.t2011/" target="_blank" class="social-link">IG1</a>
+                <a href="https://www.instagram.com/i_c_chris250/" target="_blank" class="social-link">IG2</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2 style="color: #00ff88; text-align: center; margin-bottom: 2rem;">Login</h2>
+            
+            <div class="form-group">
+                <label>Email/Username:</label>
+                <input type="text" id="loginUsername" placeholder="Enter email or username">
+            </div>
+            
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="loginPassword" placeholder="Enter password">
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn" onclick="login()">Login</button>
+                <button class="btn" onclick="continueWithGoogle()" style="background: #4285f4;">Continue with Google</button>
+            </div>
+            
+            <p style="text-align: center;">
+                Don't have an account? 
+                <a href="#" onclick="showCreateAccount()" style="color: #00ff88;">Create Account</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
+            <h2 style="color: #00ff88; text-align: center; margin-bottom: 2rem;">Create Account</h2>
+            
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="createEmail" placeholder="Enter email">
+            </div>
+            
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="createUsername" placeholder="Choose username">
+            </div>
+            
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="createPassword" placeholder="Create password">
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button class="btn" onclick="createAccount()">Create Account</button>
+                <button class="btn" onclick="continueWithGoogle()" style="background: #4285f4;">Continue with Google</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adminModal')">&times;</span>
+            <h2 style="color: #ff4444; text-align: center; margin-bottom: 2rem;">Admin Login</h2>
+            
+            <div class="form-group">
+                <label>Admin Username:</label>
+                <input type="text" id="adminUsername" placeholder="Enter admin username">
+            </div>
+            
+            <div class="form-group">
+                <label>Admin Password:</label>
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" onclick="adminLogin()" style="background: #ff4444;">Admin Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <h2 style="color: #ff4444; text-align: center; margin-bottom: 2rem;">Admin Panel</h2>
+        
+        <div class="admin-controls">
+            <div>
+                <h3>Change Password</h3>
+                <input type="password" id="newPassword" placeholder="New password" style="width: 100%; margin: 1rem 0; padding: 0.5rem; border-radius: 5px; border: 1px solid #ff4444;">
+                <button class="btn" onclick="changeAdminPassword()">Update Password</button>
+            </div>
+            
+            <div>
+                <h3>Website Management</h3>
+                <button class="btn" onclick="editWebsite()">Edit Website</button>
+                <button class="btn" onclick="viewUsers()">View Users</button>
+                <button class="btn" onclick="manageFiles()">Manage Files</button>
+            </div>
+            
+            <div>
+                <h3>Quick Stats</h3>
+                <p>Users: <span id="userCount">0</span></p>
+                <p>Files: <span id="fileCount">0</span></p>
+                <p>Messages: <span id="messageCount">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Video Modal -->
+    <div id="gameVideoModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="closeModal('gameVideoModal')">&times;</span>
+            <div id="gameVideoContainer" style="text-align: center;">
+                <!-- Game videos will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // User Management
+        let currentUser = null;
+        let isAdmin = false;
+        let users = [];
+        let uploadedFiles = [];
+        let chatMessages = [];
+        
+        // Admin Credentials
+        const adminCredentials = {
+            'M.Chris.T': 'Qwerty@2011',
+            'I.Chris': 'Qwerty@2009'
+        };
+        
+        const adminEmails = ['chrisprograms2011@gmail.com', 'ishimwecyubahirochris@gmail.com'];
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            loadChatHistory();
+            loadUploadedFiles();
+        });
+        
+        // Modal Functions
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+        
+        function showCreateAccount() {
+            closeModal('loginModal');
+            document.getElementById('createAccountModal').style.display = 'block';
+        }
+        
+        function showAdminLogin() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Authentication Functions
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                alert('Please enter both username and password');
+                return;
+            }
+            
+            // Check if it's an admin email login
+            if (adminEmails.includes(username)) {
+                // Simulate admin login for admin emails
+                currentUser = { username: username, isAdmin: true };
+                isAdmin = true;
+                updateUserStatus();
+                closeModal('loginModal');
+                alert('Welcome Admin!');
+                return;
+            }
+            
+            // Regular user login
+            const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
+            if (user) {
+                currentUser = user;
+                updateUserStatus();
+                closeModal('loginModal');
+                alert('Login successful!');
+            } else {
+                alert('Invalid credentials');
+            }
+        }
+        
+        function createAccount() {
+            const email = document.getElementById('createEmail').value;
+            const username = document.getElementById('createUsername').value;
+            const password = document.getElementById('createPassword').value;
+            
+            if (!email || !username || !password) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            // Check if user already exists
+            if (users.find(u => u.email === email || u.username === username)) {
+                alert('User already exists');
+                return;
+            }
+            
+            const newUser = {
+                id: users.length + 1,
+                email: email,
+                username: username,
+                password: password,
+                isAdmin: adminEmails.includes(email),
+                createdAt: new Date()
+            };
+            
+            users.push(newUser);
+            currentUser = newUser;
+            if (newUser.isAdmin) isAdmin = true;
+            
+            updateUserStatus();
+            closeModal('createAccountModal');
+            alert('Account created successfully!');
+            updateStats();
+        }
+        
+        function continueWithGoogle() {
+            // Simulate Google OAuth
+            const googleEmail = prompt('Enter your Google email:');
+            if (googleEmail) {
+                const isAdminEmail = adminEmails.includes(googleEmail);
+                currentUser = {
+                    email: googleEmail,
+                    username: googleEmail.split('@')[0],
+                    isAdmin: isAdminEmail,
+                    provider: 'google'
+                };
+                
+                if (isAdminEmail) {
+                    isAdmin = true;
+                    alert('Welcome Admin!');
+                } else {
+                    alert('Signed in with Google!');
+                }
+                
+                updateUserStatus();
+                closeModal('loginModal');
+                closeModal('createAccountModal');
+            }
+        }
+        
+        function logout() {
+            currentUser = null;
+            isAdmin = false;
+            updateUserStatus();
+            document.getElementById('adminPanel').style.display = 'none';
+            alert('Logged out successfully');
+        }
+        
+        function updateUserStatus() {
+            const statusDiv = document.getElementById('userStatus');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            if (currentUser) {
+                statusDiv.innerHTML = `Welcome, ${currentUser.username}${isAdmin ? ' (Admin)' : ''}`;
+                loginBtn.innerHTML = 'Logout';
+                loginBtn.onclick = logout;
+            } else {
+                statusDiv.innerHTML = 'Not Logged In';
+                loginBtn.innerHTML = 'Login';
+                loginBtn.onclick = showLoginModal;
+            }
+        }
+        
+        // Admin Functions
+        function adminLogin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (adminCredentials[username] === password) {
+                currentUser = { username: username, isAdmin: true };
+                isAdmin = true;
+                updateUserStatus();
+                closeModal('adminModal');
+                document.getElementById('adminPanel').style.display = 'block';
+                alert('Admin login successful!');
+            } else {
+                alert('Invalid admin credentials');
+            }
+        }
+        
+        function changeAdminPassword() {
+            if (!isAdmin) {
+                alert('Access denied');
+                return;
+            }
+            
+            const newPassword = document.getElementById('newPassword').value;
+            if (newPassword && currentUser) {
+                adminCredentials[currentUser.username] = newPassword;
+                alert('Password changed successfully!');
+                document.getElementById('newPassword').value = '';
+            }
+        }
+        
+        function editWebsite() {
+            if (!isAdmin) {
+                alert('Access denied');
+                return;
+            }
+            alert('Website editor would open here. This feature allows admins to modify content, add new games, and update information.');
+        }
+        
+        function viewUsers() {
+            if (!isAdmin) {
+                alert('Access denied');
+                return;
+            }
+            
+            let userList = 'Registered Users:\n\n';
+            users.forEach(user => {
+                userList += `• ${user.username} (${user.email}) - Created: ${user.createdAt.toLocaleDateString()}\n`;
+            });
+            
+            if (users.length === 0) {
+                userList += 'No users registered yet.';
+            }
+            
+            alert(userList);
+        }
+        
+        function manageFiles() {
+            if (!isAdmin) {
+                alert('Access denied');
+                return;
+            }
+            
+            let fileList = 'Uploaded Files:\n\n';
+            uploadedFiles.forEach(file => {
+                fileList += `• ${file.name} - Uploaded by: ${file.uploader} on ${file.uploadDate.toLocaleDateString()}\n`;
+            });
+            
+            if (uploadedFiles.length === 0) {
+                fileList += 'No files uploaded yet.';
+            }
+            
+            alert(fileList);
+        }
+        
+        // File Upload Functions
+        function uploadFiles() {
+            if (!currentUser) {
+                alert('Please login to upload files');
+                return;
+            }
+            
+            const fileInput = document.getElementById('fileUpload');
+            const files = fileInput.files;
+            
+            if (files.length === 0) {
+                alert('Please select files to upload');
+                return;
+            }
+            
+            for (let file of files) {
+                const fileData = {
+                    id: uploadedFiles.length + 1,
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    uploader: currentUser.username,
+                    uploadDate: new Date(),
+                    comments: []
+                };
+                
+                uploadedFiles.push(fileData);
+            }
+            
+            loadUploadedFiles();
+            updateStats();
+            alert(`${files.length} file(s) uploaded successfully!`);
+            fileInput.value = '';
+        }
+        
+        function loadUploadedFiles() {
+            const container = document.getElementById('uploadedFiles');
+            container.innerHTML = '';
+            
+            uploadedFiles.forEach(file => {
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'file-item';
+                fileDiv.innerHTML = `
+                    <h4>${file.name}</h4>
+                    <p>Size: ${(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    <p>Uploaded by: ${file.uploader}</p>
+                    <p>Date: ${file.uploadDate.toLocaleDateString()}</p>
+                    <button class="btn" onclick="downloadFile('${file.name}')" style="margin: 0.5rem;">Download</button>
+                    <button class="btn" onclick="showComments(${file.id})" style="background: #0066ff;">Comments (${file.comments.length})</button>
+                `;
+                container.appendChild(fileDiv);
+            });
+        }
+        
+        function downloadFile(fileName) {
+            alert(`Downloading ${fileName}... (In a real implementation, this would trigger the actual download)`);
+        }
+        
+        function showComments(fileId) {
+            const file = uploadedFiles.find(f => f.id === fileId);
+            if (!file) return;
+            
+            let commentsText = `Comments for ${file.name}:\n\n`;
+            file.comments.forEach(comment => {
+                commentsText += `${comment.user}: ${comment.text} (${comment.date.toLocaleDateString()})\n\n`;
+            });
+            
+            if (file.comments.length === 0) {
+                commentsText += 'No comments yet.';
+            }
+            
+            const newComment = prompt(commentsText + '\nAdd your comment:');
+            if (newComment && currentUser) {
+                file.comments.push({
+                    user: currentUser.username,
+                    text: newComment,
+                    date: new Date()
+                });
+                loadUploadedFiles();
+            }
+        }
+        
+        // AI Chat Functions
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('chatMessages');
+            
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.style.marginBottom = '1rem';
+            userMsg.style.textAlign = 'right';
+            userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+            messagesDiv.appendChild(userMsg);
+            
+            // AI response (simulated)
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.style.marginBottom = '1rem';
+                aiMsg.style.color = '#00ff88';
+                aiMsg.innerHTML = `<strong>Chris AI:</strong> ${generateAIResponse(message)}`;
+                messagesDiv.appendChild(aiMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                
+                // Store message
+                chatMessages.push({ user: currentUser?.username || 'Anonymous', message: message, timestamp: new Date() });
+                updateStats();
+            }, 1000);
+            
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        function generateAIResponse(message) {
+            const responses = [
+                "That's an interesting question about gaming! Let me help you with that.",
+                "I can definitely assist with programming and game-related queries. What specific help do you need?",
+                "Great question! As your gaming assistant, I'm here to help with downloads, troubleshooting, and recommendations.",
+                "I'm storing this conversation data for ChrisPrograms analysis. How else can I assist you today?",
+                "Thanks for using ChrisPrograms! I'm designed to help with gaming, coding, and tech support.",
+                "Let me search my database for the best solution to your gaming question...",
+                "Based on ChrisPrograms' extensive game library, I recommend checking out our featured sites for the best downloads."
+            ];
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        function loadChatHistory() {
+            // Simulated chat history loading
+            console.log('Chat history loaded');
+        }
+        
+        // Game Video Functions
+        function showGameVideo(game) {
+            const modal = document.getElementById('gameVideoModal');
+            const container = document.getElementById('gameVideoContainer');
+            
+            let videoContent = '';
+            
+            switch(game) {
+                case 'gta':
+                    videoContent = `
+                        <h3>GTA Series</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QkkoHAzjnUs" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Download GTA series from our partner sites!</p>
+                    `;
+                    break;
+                case 'cod':
+                    videoContent = `
+                        <h3>Call of Duty</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/mzGgOz-9FXI" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Get the latest COD games compressed!</p>
+                    `;
+                    break;
+                case 'fifa':
+                    videoContent = `
+                        <h3>FIFA Series</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/o3V-GvvzjE4" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Download FIFA and PES games here!</p>
+                    `;
+                    break;
+            }
+            
+            container.innerHTML = videoContent;
+            modal.style.display = 'block';
+        }
+        
+        // Statistics Functions
+        function updateStats() {
+            document.getElementById('userCount').textContent = users.length;
+            document.getElementById('fileCount').textContent = uploadedFiles.length;
+            document.getElementById('messageCount').textContent = chatMessages.length;
+        }
+        
+        // Groups and Social Features (Simulated)
+        function createGroup() {
+            if (!currentUser) {
+                alert('Please login to create groups');
+                return;
+            }
+            
+            const groupName = prompt('Enter group name:');
+            if (groupName) {
+                alert(`Group "${groupName}" created! Invite friends to join your gaming group.`);
+            }
+        }
+        
+        function joinGroup() {
+            if (!currentUser) {
+                alert('Please login to join groups');
+                return;
+            }
+            
+            const groupId = prompt('Enter group ID or name:');
+            if (groupId) {
+                alert(`You've joined the group: ${groupId}`);
+            }
+        }
+        
+        // Download Functions
+        function downloadPopularGame(game) {
+            alert(`Redirecting to download ${game}... Check our partner sites for safe downloads!`);
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Dynamic content loading
+        function loadPopularDownloads() {
+            const popularGames = [
+                { name: 'GTA V', size: '36 GB → 18 GB', link: '#' },
+                { name: 'Call of Duty MW', size: '175 GB → 45 GB', link: '#' },
+                { name: 'FIFA 24', size: '50 GB → 12 GB', link: '#' },
+                { name: 'Assassin\'s Creed', size: '85 GB → 25 GB', link: '#' },
+                { name: 'Cyberpunk 2077', size: '70 GB → 28 GB', link: '#' }
+            ];
+            
+            return popularGames;
+        }
+        
+        // Initialize animations
+        function initAnimations() {
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+                card.classList.add('fade-in');
+            });
+        }
+        
+        // Call initialization
+        setTimeout(initAnimations, 100);
+    </script>
+    
+    <!-- Additional Gaming Section -->
+    <section style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(0, 102, 255, 0.1)); border-radius: 20px;">
+        <h2 class="section-title">Coding Resources</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-logo">VS</div>
+                <h3>Visual Studio Code</h3>
+                <p>Free source-code editor for programming</p>
+                <a href="https://code.visualstudio.com/" target="_blank" class="btn">Download</a>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-logo">PY</div>
+                <h3>Python</h3>
+                <p>Learn Python programming language</p>
+                <a href="https://www.python.org/" target="_blank" class="btn">Get Started</a>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-logo">GH</div>
+                <h3>GitHub</h3>
+                <p>Version control and collaboration platform</p>
+                <a href="https://github.com/" target="_blank" class="btn">Explore</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gaming Community Section -->
+    <section style="margin: 3rem 0; padding: 2rem; background: rgba(0, 0, 0, 0.5); border-radius: 20px; border: 1px solid #00ff88;">
+        <h2 class="section-title">Gaming Community</h2>
+        <div style="text-align: center;">
+            <p style="margin-bottom: 2rem; color: #cccccc;">Connect with fellow gamers, share experiences, and discover new games!</p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <button class="btn" onclick="createGroup()">Create Group</button>
+                <button class="btn" onclick="joinGroup()">Join Group</button>
+                <button class="btn" onclick="alert('Chat feature coming soon!')">Live Chat</button>
+                <button class="btn" onclick="alert('Forum opening soon!')">Gaming Forum</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="background: rgba(0, 0, 0, 0.8); padding: 2rem 0; text-align: center; margin-top: 3rem; border-top: 2px solid #00ff88;">
+        <div class="container">
+            <div class="logo" style="margin-bottom: 1rem;">ChrisPrograms</div>
+            <p>© 2025 ChrisPrograms. Your trusted gaming and programming resource hub.</p>
+            <p style="margin-top: 1rem; color: #00ff88;">Safe downloads • Compressed games • Programming resources • Community support</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="mailto:chrisprograms2011@gmail.com" style="color: #00ff88; text-decoration: none;">📧 chrisprograms2011@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
