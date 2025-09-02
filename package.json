@@ -1,0 +1,8 @@
+@@ .. @@
+   "scripts": {
+-    "test": "echo \"Error: no test specified\" && exit 1"
++    "dev": "concurrently \"nodemon server/index.js\" \"npx serve . -p 3001\"",
++    "start": "node server/index.js",
++    "client": "npx serve . -p 3001",
++    "server": "nodemon server/index.js"
+   },
