@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChrisPrograms - Your Ultimate Gaming Hub</title>
+    <title>ChrisPrograms - Programming, Gaming & Development Hub</title>
     <style>
         * {
             margin: 0;
@@ -59,7 +60,20 @@
             align-items: center;
         }
         
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid #00ff88;
+        }
+        
+        .logo-text {
             font-size: 2rem;
             font-weight: bold;
             background: linear-gradient(45deg, #00ff88, #0066ff);
@@ -525,10 +539,15 @@
     
     <header>
         <nav class="container">
-            <div class="logo">ChrisPrograms</div>
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/chrisprograms2024/chrisprograms/main/logo.png" alt="ChrisPrograms Logo" class="logo-img">
+                <div class="logo-text">ChrisPrograms</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#games">Games</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#games">Gaming</a></li>
+                <li><a href="#coding">Coding</a></li>
                 <li><a href="#upload">Upload</a></li>
                 <li><a href="#chat">Chat</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -541,59 +560,87 @@
         <!-- Hero Section -->
         <section id="home" class="hero fade-in">
             <h1>Welcome to ChrisPrograms</h1>
-            <p>Your ultimate destination for compressed games, programming resources, and gaming community. Download, share, and connect with fellow gamers!</p>
+            <p>Your ultimate destination for programming resources, compressed games, development tools, and tech community. Code, game, learn, and connect with fellow developers and gamers!</p>
         </section>
 
-        <!-- Featured Games Section -->
-        <section id="games" class="games-section">
-            <h2 class="section-title">Featured Gaming Websites</h2>
+        <!-- Programming Tools Section -->
+        <section id="programs" class="games-section">
+            <h2 class="section-title">Programming Tools & Resources</h2>
             <div class="games-grid">
                 <div class="game-card pulse">
-                    <div class="game-logo">CGH</div>
-                    <h3>Compressed Game Hub</h3>
-                    <p>The best platform to download highly compressed games for PC in Google Drive links. Completely safe downloads including GTA 5, GTA 4 and many more popular titles.</p>
-                    <a href="https://compressedgamehub.co.in/" target="_blank" class="btn">Visit Site</a>
+                    <div class="game-logo">VS</div>
+                    <h3>Visual Studio Code</h3>
+                    <p>Free, powerful source-code editor with IntelliSense, debugging, and Git integration. Perfect for web development, Python, JavaScript, and more.</p>
+                    <a href="https://code.visualstudio.com/" target="_blank" class="btn">Download</a>
                 </div>
                 
                 <div class="game-card pulse">
-                    <div class="game-logo">ATH</div>
-                    <h3>All Type Hacks</h3>
-                    <p>We make hacking easy! Find software cracks, game cheats, full version software, highly compressed games, and unlimited free tricks for gamers and developers.</p>
-                    <a href="https://www.alltypehacks.net/" target="_blank" class="btn">Visit Site</a>
+                    <div class="game-logo">GH</div>
+                    <h3>GitHub Desktop</h3>
+                    <p>Simplify your Git workflow with GitHub Desktop. Version control made easy with a beautiful, intuitive interface for managing repositories.</p>
+                    <a href="https://desktop.github.com/" target="_blank" class="btn">Download</a>
                 </div>
                 
                 <div class="game-card pulse">
-                    <div class="game-logo">OOC</div>
-                    <h3>Ocean of Compressed</h3>
-                    <p>Download highly compressed PC games that work 100%. Also provides highly compressed Android games with guaranteed functionality and safety.</p>
-                    <a href="https://oceanofcompressed.com/" target="_blank" class="btn">Visit Site</a>
+                    <div class="game-logo">PY</div>
+                    <h3>Python</h3>
+                    <p>Learn and download Python - the versatile programming language for web development, data science, AI, and automation.</p>
+                    <a href="https://www.python.org/downloads/" target="_blank" class="btn">Download</a>
                 </div>
             </div>
         </section>
 
-        <!-- Popular Games -->
-        <section class="popular-games">
-            <h2 class="section-title">Popular Games</h2>
+        <!-- Coding Resources Section -->
+        <section id="coding" class="games-section">
+            <h2 class="section-title">Development Resources</h2>
             <div class="games-grid">
                 <div class="game-card">
-                    <div class="game-logo">GTA</div>
-                    <h3>GTA Series</h3>
-                    <p>Grand Theft Auto games - Vice City, San Andreas, GTA V</p>
-                    <button class="btn" onclick="showGameVideo('gta')">Watch Trailer</button>
+                    <div class="game-logo">JS</div>
+                    <h3>JavaScript Frameworks</h3>
+                    <p>React, Vue, Angular - Modern JavaScript frameworks for building dynamic web applications and user interfaces.</p>
+                    <button class="btn" onclick="showCodingVideo('javascript')">Learn More</button>
                 </div>
                 
                 <div class="game-card">
-                    <div class="game-logo">COD</div>
-                    <h3>Call of Duty</h3>
-                    <p>Modern Warfare series and classic COD games</p>
-                    <button class="btn" onclick="showGameVideo('cod')">Watch Trailer</button>
+                    <div class="game-logo">DB</div>
+                    <h3>Database Systems</h3>
+                    <p>MySQL, PostgreSQL, MongoDB - Learn database design, SQL queries, and data management for your applications.</p>
+                    <button class="btn" onclick="showCodingVideo('database')">Learn More</button>
                 </div>
                 
                 <div class="game-card">
-                    <div class="game-logo">FIFA</div>
-                    <h3>FIFA Series</h3>
-                    <p>Latest FIFA games and PES alternatives</p>
-                    <button class="btn" onclick="showGameVideo('fifa')">Watch Trailer</button>
+                    <div class="game-logo">API</div>
+                    <h3>API Development</h3>
+                    <p>REST APIs, GraphQL, Node.js - Build robust backend services and APIs for web and mobile applications.</p>
+                    <button class="btn" onclick="showCodingVideo('api')">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gaming Section -->
+        <section id="games" class="popular-games">
+            <h2 class="section-title">Popular Games</h2>
+            <p style="text-align: center; color: #cccccc; margin-bottom: 2rem;">Discover compressed games and gaming resources</p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-logo">CGH</div>
+                    <h3>Compressed Game Hub</h3>
+                    <p>Download highly compressed PC games including GTA series, Call of Duty, and more popular titles safely.</p>
+                    <a href="https://compressedgamehub.co.in/" target="_blank" class="btn">Visit Site</a>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-logo">ATH</div>
+                    <h3>All Type Hacks</h3>
+                    <p>Software cracks, game cheats, full version software, and unlimited free resources for developers and gamers.</p>
+                    <a href="https://www.alltypehacks.net/" target="_blank" class="btn">Visit Site</a>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-logo">OOC</div>
+                    <h3>Ocean of Compressed</h3>
+                    <p>Highly compressed PC and Android games that work 100% with guaranteed functionality and safety.</p>
+                    <a href="https://oceanofcompressed.com/" target="_blank" class="btn">Visit Site</a>
                 </div>
             </div>
         </section>
@@ -601,7 +648,7 @@
         <!-- File Upload Section -->
         <section id="upload" class="upload-section">
             <h2 class="section-title">Upload Files</h2>
-            <p>Share your games, photos, and videos with the community!</p>
+            <p>Share your programs, games, code projects, and resources with the community!</p>
             
             <div class="form-group">
                 <input type="file" id="fileUpload" multiple accept="*/*" style="display: none;">
@@ -617,14 +664,15 @@
         <!-- AI Chat Section -->
         <section id="chat" class="ai-chat">
             <h2 class="section-title">Chat with Chris AI</h2>
+            <p style="text-align: center; color: #cccccc; margin-bottom: 1rem;">Get help with programming, gaming, troubleshooting, and development questions!</p>
             <div class="chat-container">
                 <div id="chatMessages" class="chat-messages">
                     <div style="color: #00ff88; margin-bottom: 1rem;">
-                        <strong>Chris AI:</strong> Hello! I'm Chris, your personal gaming assistant. Ask me anything about games, programming, or tech!
+                        <strong>Chris AI:</strong> Hello! I'm Chris, your programming and gaming assistant. Ask me anything about coding, development, games, or tech support!
                     </div>
                 </div>
                 <div class="chat-input-container">
-                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask Chris AI anything..." onkeypress="handleChatKeyPress(event)">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask about programming, gaming, or tech support..." onkeypress="handleChatKeyPress(event)">
                     <button class="btn" onclick="sendMessage()">Send</button>
                 </div>
             </div>
@@ -647,7 +695,12 @@
                 
                 <div class="contact-item">
                     <h3>🎮 Gaming Hub</h3>
-                    <p>Download compressed games safely</p>
+                    <p>Programming resources & compressed games</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3>💻 Development</h3>
+                    <p>Coding tutorials & software tools</p>
                 </div>
             </div>
             
@@ -1130,14 +1183,41 @@
         }
         
         function generateAIResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Programming-specific responses
+            if (lowerMessage.includes('code') || lowerMessage.includes('programming') || lowerMessage.includes('development')) {
+                return "I can help with programming questions! Whether it's JavaScript, Python, web development, or debugging - I'm here to assist with your coding journey.";
+            }
+            
+            if (lowerMessage.includes('javascript') || lowerMessage.includes('js')) {
+                return "JavaScript is awesome! I can help with vanilla JS, React, Node.js, or any JavaScript framework. What specific help do you need?";
+            }
+            
+            if (lowerMessage.includes('python')) {
+                return "Python is great for beginners and experts alike! I can help with syntax, libraries, web development with Django/Flask, or data science projects.";
+            }
+            
+            if (lowerMessage.includes('html') || lowerMessage.includes('css')) {
+                return "Web development fundamentals! I can help with HTML structure, CSS styling, responsive design, and modern web practices.";
+            }
+            
+            if (lowerMessage.includes('git') || lowerMessage.includes('github')) {
+                return "Version control is essential! I can help with Git commands, GitHub workflows, branching strategies, and collaboration best practices.";
+            }
+            
+            // Gaming responses
+            if (lowerMessage.includes('game') || lowerMessage.includes('download')) {
+                return "I can help you find compressed games and gaming resources! Check out our featured sites for safe downloads and gaming tools.";
+            }
+            
             const responses = [
-                "That's an interesting question about gaming! Let me help you with that.",
-                "I can definitely assist with programming and game-related queries. What specific help do you need?",
-                "Great question! As your gaming assistant, I'm here to help with downloads, troubleshooting, and recommendations.",
-                "I'm storing this conversation data for ChrisPrograms analysis. How else can I assist you today?",
-                "Thanks for using ChrisPrograms! I'm designed to help with gaming, coding, and tech support.",
-                "Let me search my database for the best solution to your gaming question...",
-                "Based on ChrisPrograms' extensive game library, I recommend checking out our featured sites for the best downloads."
+                "I can help with programming, development, gaming, and tech support. What would you like to work on?",
+                "Whether you need coding help, game recommendations, or technical troubleshooting - I'm here to assist!",
+                "ChrisPrograms offers resources for developers and gamers alike. How can I help you today?",
+                "I'm your programming and gaming assistant! Ask me about code, development tools, games, or any tech questions.",
+                "From web development to game downloads, I'm here to help with all your programming and gaming needs!",
+                "Let me help you with coding, debugging, game resources, or any technical challenges you're facing."
             ];
             
             return responses[Math.floor(Math.random() * responses.length)];
@@ -1196,25 +1276,25 @@
         // Groups and Social Features (Simulated)
         function createGroup() {
             if (!currentUser) {
-                alert('Please login to create groups');
+                alert('Please login to create developer groups');
                 return;
             }
             
-            const groupName = prompt('Enter group name:');
+            const groupName = prompt('Enter developer group name:');
             if (groupName) {
-                alert(`Group "${groupName}" created! Invite friends to join your gaming group.`);
+                alert(`Developer group "${groupName}" created! Invite fellow developers and gamers to collaborate.`);
             }
         }
         
         function joinGroup() {
             if (!currentUser) {
-                alert('Please login to join groups');
+                alert('Please login to join developer groups');
                 return;
             }
             
-            const groupId = prompt('Enter group ID or name:');
+            const groupId = prompt('Enter developer group ID or name:');
             if (groupId) {
-                alert(`You've joined the group: ${groupId}`);
+                alert(`You've joined the developer group: ${groupId}. Start collaborating on projects!`);
             }
         }
         
@@ -1260,6 +1340,44 @@
             return popularGames;
         }
         
+        // Coding video functions
+        function showCodingVideo(topic) {
+            const modal = document.getElementById('gameVideoModal');
+            const container = document.getElementById('gameVideoContainer');
+            
+            let videoContent = '';
+            
+            switch(topic) {
+                case 'javascript':
+                    videoContent = `
+                        <h3>JavaScript Development</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Learn JavaScript fundamentals and modern frameworks!</p>
+                    `;
+                    break;
+                case 'database':
+                    videoContent = `
+                        <h3>Database Development</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/HXV3zeQKqGY" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Master database design and SQL queries!</p>
+                    `;
+                    break;
+                case 'api':
+                    videoContent = `
+                        <h3>API Development</h3>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/pKd0Rpw7O48" 
+                        frameborder="0" allowfullscreen style="border-radius: 10px; max-width: 100%;"></iframe>
+                        <p style="margin-top: 1rem;">Build powerful APIs and backend services!</p>
+                    `;
+                    break;
+            }
+            
+            container.innerHTML = videoContent;
+            modal.style.display = 'block';
+        }
+        
         // Initialize animations
         function initAnimations() {
             const cards = document.querySelectorAll('.game-card');
@@ -1275,42 +1393,42 @@
     
     <!-- Additional Gaming Section -->
     <section style="margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(0, 102, 255, 0.1)); border-radius: 20px;">
-        <h2 class="section-title">Coding Resources</h2>
+        <h2 class="section-title">Development Tools</h2>
         <div class="games-grid">
             <div class="game-card">
-                <div class="game-logo">VS</div>
-                <h3>Visual Studio Code</h3>
-                <p>Free source-code editor for programming</p>
-                <a href="https://code.visualstudio.com/" target="_blank" class="btn">Download</a>
+                <div class="game-logo">NJ</div>
+                <h3>Node.js</h3>
+                <p>JavaScript runtime for server-side development</p>
+                <a href="https://nodejs.org/" target="_blank" class="btn">Download</a>
             </div>
             
             <div class="game-card">
-                <div class="game-logo">PY</div>
-                <h3>Python</h3>
-                <p>Learn Python programming language</p>
-                <a href="https://www.python.org/" target="_blank" class="btn">Get Started</a>
+                <div class="game-logo">DC</div>
+                <h3>Docker</h3>
+                <p>Containerization platform for development</p>
+                <a href="https://www.docker.com/" target="_blank" class="btn">Download</a>
             </div>
             
             <div class="game-card">
-                <div class="game-logo">GH</div>
-                <h3>GitHub</h3>
-                <p>Version control and collaboration platform</p>
-                <a href="https://github.com/" target="_blank" class="btn">Explore</a>
+                <div class="game-logo">FG</div>
+                <h3>Figma</h3>
+                <p>Design tool for UI/UX development</p>
+                <a href="https://www.figma.com/" target="_blank" class="btn">Get Started</a>
             </div>
         </div>
     </section>
     
-    <!-- Gaming Community Section -->
+    <!-- Programming Community Section -->
     <section style="margin: 3rem 0; padding: 2rem; background: rgba(0, 0, 0, 0.5); border-radius: 20px; border: 1px solid #00ff88;">
-        <h2 class="section-title">Gaming Community</h2>
+        <h2 class="section-title">Developer & Gaming Community</h2>
         <div style="text-align: center;">
-            <p style="margin-bottom: 2rem; color: #cccccc;">Connect with fellow gamers, share experiences, and discover new games!</p>
+            <p style="margin-bottom: 2rem; color: #cccccc;">Connect with developers and gamers, share code projects, collaborate on programming challenges, and discover new technologies!</p>
             
             <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <button class="btn" onclick="createGroup()">Create Group</button>
-                <button class="btn" onclick="joinGroup()">Join Group</button>
-                <button class="btn" onclick="alert('Chat feature coming soon!')">Live Chat</button>
-                <button class="btn" onclick="alert('Forum opening soon!')">Gaming Forum</button>
+                <button class="btn" onclick="createGroup()">Create Dev Group</button>
+                <button class="btn" onclick="joinGroup()">Join Community</button>
+                <button class="btn" onclick="alert('Code sharing feature coming soon!')">Share Code</button>
+                <button class="btn" onclick="alert('Developer forum opening soon!')">Dev Forum</button>
             </div>
         </div>
     </section>
@@ -1318,9 +1436,12 @@
     <!-- Footer -->
     <footer style="background: rgba(0, 0, 0, 0.8); padding: 2rem 0; text-align: center; margin-top: 3rem; border-top: 2px solid #00ff88;">
         <div class="container">
-            <div class="logo" style="margin-bottom: 1rem;">ChrisPrograms</div>
-            <p>© 2025 ChrisPrograms. Your trusted gaming and programming resource hub.</p>
-            <p style="margin-top: 1rem; color: #00ff88;">Safe downloads • Compressed games • Programming resources • Community support</p>
+            <div class="logo-container" style="justify-content: center; margin-bottom: 1rem;">
+                <img src="https://raw.githubusercontent.com/chrisprograms2024/chrisprograms/main/logo.png" alt="ChrisPrograms Logo" class="logo-img">
+                <div class="logo-text">ChrisPrograms</div>
+            </div>
+            <p>© 2025 ChrisPrograms. Your trusted programming, gaming, and development resource hub.</p>
+            <p style="margin-top: 1rem; color: #00ff88;">Programming Tools • Development Resources • Compressed Games • Code Sharing • Community Support</p>
             
             <div style="margin-top: 2rem;">
                 <a href="mailto:chrisprograms2011@gmail.com" style="color: #00ff88; text-decoration: none;">📧 chrisprograms2011@gmail.com</a>

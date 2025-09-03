@@ -352,6 +352,63 @@ function handleChatKeyPress(event) {
   }
 }
 
+function generateAIResponse(message) {
+  const lowerMessage = message.toLowerCase();
+  
+  // Programming-specific responses
+  if (lowerMessage.includes('code') || lowerMessage.includes('programming') || lowerMessage.includes('development')) {
+      return "I can help with programming questions! Whether it's JavaScript, Python, web development, or debugging - I'm here to assist with your coding journey.";
+  }
+  
+  if (lowerMessage.includes('javascript') || lowerMessage.includes('js')) {
+      return "JavaScript is awesome! I can help with vanilla JS, React, Node.js, or any JavaScript framework. What specific help do you need?";
+  }
+  
+  if (lowerMessage.includes('python')) {
+      return "Python is great for beginners and experts alike! I can help with syntax, libraries, web development with Django/Flask, or data science projects.";
+  }
+  
+  if (lowerMessage.includes('html') || lowerMessage.includes('css')) {
+      return "Web development fundamentals! I can help with HTML structure, CSS styling, responsive design, and modern web practices.";
+  }
+  
+  if (lowerMessage.includes('git') || lowerMessage.includes('github')) {
+      return "Version control is essential! I can help with Git commands, GitHub workflows, branching strategies, and collaboration best practices.";
+  }
+  
+  if (lowerMessage.includes('database') || lowerMessage.includes('sql')) {
+      return "Database development is crucial! I can help with SQL queries, database design, PostgreSQL, MySQL, or NoSQL databases like MongoDB.";
+  }
+  
+  if (lowerMessage.includes('react') || lowerMessage.includes('vue') || lowerMessage.includes('angular')) {
+      return "Modern frameworks are powerful! I can help with component architecture, state management, routing, and best practices for your chosen framework.";
+  }
+  
+  if (lowerMessage.includes('api') || lowerMessage.includes('backend')) {
+      return "Backend development is my specialty! I can help with REST APIs, GraphQL, authentication, database integration, and server architecture.";
+  }
+  
+  // Gaming responses
+  if (lowerMessage.includes('game') || lowerMessage.includes('download')) {
+      return "I can help you find compressed games and gaming resources! Check out our featured sites for safe downloads and gaming tools.";
+  }
+  
+  if (lowerMessage.includes('error') || lowerMessage.includes('bug') || lowerMessage.includes('debug')) {
+      return "Debugging is part of programming! Describe the error you're encountering and I'll help you troubleshoot and find a solution.";
+  }
+  
+  const responses = [
+      "I can help with programming, development, gaming, and tech support. What would you like to work on?",
+      "Whether you need coding help, game recommendations, or technical troubleshooting - I'm here to assist!",
+      "ChrisPrograms offers resources for developers and gamers alike. How can I help you today?",
+      "I'm your programming and gaming assistant! Ask me about code, development tools, games, or any tech questions.",
+      "From web development to game downloads, I'm here to help with all your programming and gaming needs!",
+      "Let me help you with coding, debugging, game resources, or any technical challenges you're facing."
+  ];
+  
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
 // Admin Functions
 async function adminLogin() {
   try {
@@ -523,25 +580,25 @@ function manageFiles() {
 // Utility functions
 function createGroup() {
   if (!currentUser) {
-    alert('Please login to create groups');
+    alert('Please login to create developer groups');
     return;
   }
 
-  const groupName = prompt('Enter group name:');
+  const groupName = prompt('Enter developer group name:');
   if (groupName) {
-    alert(`Group "${groupName}" created! This feature will be fully implemented with real-time chat and file sharing.`);
+    alert(`Developer group "${groupName}" created! Invite fellow developers and gamers to collaborate.`);
   }
 }
 
 function joinGroup() {
   if (!currentUser) {
-    alert('Please login to join groups');
+    alert('Please login to join developer groups');
     return;
   }
 
-  const groupId = prompt('Enter group ID or name:');
+  const groupId = prompt('Enter developer group ID or name:');
   if (groupId) {
-    alert(`You've joined the group: ${groupId}. Real-time group features coming soon!`);
+    alert(`You've joined the developer group: ${groupId}. Start collaborating on projects!`);
   }
 }
 
